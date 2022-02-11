@@ -1,28 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <component :is="layout">
+      <div class="h-full">
+        <AlertBox />
+        <Toast />
+        <transition name="slideX" mode="out-in">
+          <router-view />
+        </transition>
+      </div>
+    </component>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+const default_layout = "default";
+import { AlertBox, Toast } from "@/UI/Notification";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    AlertBox,
+    Toast,
+  },
+  computed: {
+    layout() {
+      return (this.$route.meta.layout || default_layout) + "-layout";
+    },
+  },
+};
 </script>
-
 <style>
+@import "./assets/main.css";
+/* @import "./assets/css/fonts.css"; */
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: "BasisGrotes", Helvetica;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+p {
+  font-size: 16px;
+}
+@media only screen and (max-width: 600px) {
+  p {
+    font-size: 14px;
+  }
 }
 </style>
