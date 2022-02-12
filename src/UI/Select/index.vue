@@ -87,7 +87,7 @@
               <p>{{ option }}</p>
               <img
                 v-show="text === option"
-                src="https://res.cloudinary.com/zillaafrica/image/upload/v1630797354/customer/Group_642_kmimow.svg"
+                src="@/assets/icons/select.svg"
                 alt=""
                 class="eligibile-icon w-4"
               />

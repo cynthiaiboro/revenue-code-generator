@@ -6,7 +6,7 @@
           <div class="flex justify-end">
             <img
               class="h-3 w-3 cursor-pointer"
-              src="https://res.cloudinary.com/zillaafrica/image/upload/v1623525601/customer/Union_yx6ulk.svg"
+              src="@/assets/icons/close.svg"
               alt="cancel"
               @click="closeDisplay"
             />
@@ -14,13 +14,13 @@
           <div class="completed mt-8">
             <img
               class="h-32 w-32 mx-auto"
-              src="https://res.cloudinary.com/zillaafrica/image/upload/q_auto/v1624100575/customer/Group_707_1_tpsp0o.svg"
+              src="@/assets/icons/alertSuccess.svg"
               alt="success"
               v-if="type === 'success'"
             />
             <img
               class="h-28 w-28 mx-auto"
-              src="https://res.cloudinary.com/zillaafrica/image/upload/q_auto/v1629045373/Group_12919_be2tin.svg"
+              src="@/assets/icons/alertError.svg"
               alt="success"
               v-if="type === 'error'"
             />

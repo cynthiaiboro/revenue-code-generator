@@ -1,5 +1,5 @@
 <template>
-  <div class="container-body p-6">
+  <div class="container-body p-3 md:p-6">
     <MobileNav class="md:hidden" />
     <div class="main">
       <Navbar class="sticky top-0 z-50"/>
