@@ -1,0 +1,109 @@
+@font-face {
+  font-family: "BasisGrotes";
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+  unicode-range: U+000-5FF;
+  src: url("./fonts/BasisGrotesqueArabicPro-Light.ttf") format("opentype");
+}
+@font-face {
+  font-family: "BasisGrotes";
+  font-weight: 600;
+  font-style: semibold;
+  font-display: auto;
+  unicode-range: U+000-5FF;
+  src: url("./fonts/BasisGrotesqueArabicPro-Medium.ttf") format("opentype");
+}
+@font-face {
+  font-family: "BasisGrotes";
+  font-weight: 800;
+  font-style: bold;
+  font-display: auto;
+  unicode-range: U+000-5FF;
+  src: url("./fonts/BasisGrotesqueArabicPro-Regular.ttf") format("opentype");
+}
+.icon {
+  height: 40px;
+  width: 40px;
+}
+.scrollbar::-webkit-scrollbar {
+  width: 3px !important;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 10px;
+}
+.popover-bottom {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.popover-bottom:before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-bottom: solid 10px #fff;
+  border-left: solid 10px transparent;
+  border-right: solid 10px transparent;
+}
+
+
+.tabs {
+  position: relative;
+  margin: 0 auto;
+}
+
+.tabs__item {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 10px;
+  padding-bottom: 8px;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  color: #000;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.tabs__item_active {
+  color: #1C6806;
+  background-color: #ECFEE7;
+  border-bottom: 4px solid #1C6806;
+}
+
+.tabs__item:hover {
+  color: black;
+}
+
+.tabs__item:focus {
+  outline: none;
+  background-color: #ECFEE7;
+  border-bottom: 4px solid #1C6806;
+  color: #1C6806;
+}
+
+.tabs__item:first-child {
+  margin-left: 0;
+}
+
+.tabs__item:last-child {
+  margin-right: 0;
+}
+
+.tabs__active-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: black;
+  transition: transform 0.4s ease, width 0.4s ease;
+}
