@@ -4,7 +4,7 @@
       <MobileNav class="md:hidden" />
       <Navbar class="sticky top-0 z-50" />
       <div class="bg-white rounded mt-6 body-content h-full">
-        <div class="p-4 md:p-0 md:m-10 container h-full">
+        <div class="main-container h-full">
           <slot />
         </div>
       </div>

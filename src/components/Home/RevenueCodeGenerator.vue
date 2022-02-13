@@ -15,6 +15,9 @@
         :reduce="(item) => item.code"
         placeholder="Select line item"
         v-model="code.lineItemId"
+        errorText="Line item is required"
+        :validation="rules.lineItem"
+        @valid="valid.lineItem = $event"
       />
       <Select
         class="mt-10"
@@ -24,6 +27,9 @@
         :reduce="(item) => item.code"
         placeholder="Select account type"
         v-model="code.accountTypeId"
+        errorText="Account type is required"
+        :validation="rules.accountType"
+        @valid="valid.accountType = $event"
       />
       <Select
         class="mt-10"
@@ -33,6 +39,9 @@
         :reduce="(item) => item.code"
         placeholder="Select sub account type"
         v-model="code.subAccountTypeId"
+        errorText="Sub account type is required"
+        :validation="rules.subAccountType"
+        @valid="valid.subAccountType = $event"
       />
       <Select
         class="mt-10"
@@ -42,6 +51,9 @@
         :reduce="(item) => item.code"
         placeholder="Select account class"
         v-model="code.accountClassId"
+        errorText="Account class is required"
+        :validation="rules.accountClass"
+        @valid="valid.accountClass = $event"
       />
       <Select
         class="mt-10"
@@ -51,6 +63,9 @@
         :reduce="(item) => item.code"
         placeholder="Select sub account class"
         v-model="code.subAccountClassId"
+        errorText="Sub account class is required"
+        :validation="rules.subAccountClass"
+        @valid="valid.subAccountClass = $event"
       />
       <div>
         <div class="relative">
@@ -69,6 +84,7 @@
             width="w-40"
             :loading="loading"
             @click="generateCode()"
+            :disabled="disableButton"
           />
         </div>
         <p
@@ -91,14 +107,10 @@
         </p>
       </div>
     </div>
-    <div class="flex justify-center mb-12">
-      <Button text="Continue" p="px-20 py-6" class="mt-16" width="w-1/2" />
-    </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
 import Input from "@/UI/Input";
 import Button from "@/UI/Button";
 import Select from "@/UI/Select";
@@ -111,15 +123,42 @@ export default {
     RevenueCodeGenerator,
   },
   data: () => ({
-    lineItem: [RevenueCodeGenerator],
+    lineItem: [],
     accountType: [],
     subAccountType: [],
     accountClass: [],
     subAccountClass: [],
-    code: {},
+    code: {
+      lineItemId: "",
+      accountTypeId: "",
+      subAccountTypeId: "",
+      accountClassId: "",
+      subAccountClassId: "",
+    },
     generatedCode: "",
     loading: false,
+    valid: {
+      lineItem: false,
+      accountType: false,
+      subAccountType: false,
+      accountClass: false,
+      subAccountClass: false,
+    },
   }),
+  computed: {
+    rules() {
+      return {
+        lineItem: this.code.lineItemId.length > 0,
+        accountType: this.code.accountTypeId.length > 0,
+        subAccountType: this.code.subAccountTypeId.length > 0,
+        accountClass: this.code.accountClassId.length > 0,
+        subAccountClass: this.code.subAccountClassId.length > 0,
+      };
+    },
+    disableButton() {
+      return Object.values(this.rules).includes(false);
+    },
+  },
   mounted() {
     this.getLineItem();
     this.getAccountType();
@@ -176,6 +215,7 @@ export default {
           this.loading = false;
           this.generatedCode === res.data.code;
           console.log(res.data);
+          this.$emit("continue");
         })
         .catch(() => {
           this.loading = false;

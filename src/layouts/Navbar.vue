@@ -50,13 +50,22 @@ export default {
   data: () => ({
     currentTab: "home",
   }),
+  mounted() {
+    if (this.$route.path === "/") {
+      if (this.$route.path !== "/") this.$router.push("/");
+      this.currentTab = "home";
+    } else {
+      if (this.$route.path !== "/generate") this.$router.push("/generate");
+      this.currentTab = "generate";
+    }
+  },
   methods: {
     handleClick(newTab) {
       this.currentTab = this.newTab;
       if (newTab === "home") {
         if (this.$route.path !== "/") this.$router.push("/");
       } else {
-         if (this.$route.path !== "/generate") this.$router.push("/generate");
+        if (this.$route.path !== "/generate") this.$router.push("/generate");
       }
     },
   },

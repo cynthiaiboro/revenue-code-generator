@@ -66,6 +66,13 @@
           </div>
         </div>
       </div>
+      <div class="error-text">
+        <transition name="fade">
+          <p class="text-brandRed text-xs mt-1" v-if="error">
+            {{ errorText }}
+          </p>
+        </transition>
+      </div>
     </div>
   </div>
 </template>

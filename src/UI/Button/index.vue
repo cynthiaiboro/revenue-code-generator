@@ -104,7 +104,6 @@ export default {
   box-shadow: -6px 12px 20px rgba(194, 22, 63, 0.26);
 }
 button:disabled {
-  background-color: #c4c4c4;
   cursor: not-allowed;
   opacity: 0.5;
 }
