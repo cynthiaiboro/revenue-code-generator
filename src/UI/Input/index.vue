@@ -1,21 +1,6 @@
 <template>
   <div class="relative">
-    <!-- <transition name="slideUp">
-      <p class="text-xs placeholder-top absolute -top-4" v-if="showPlaceholder">
-        {{ placeholder }}
-      </p>
-    </transition> -->
-
     <div class="relative inline-block" :class="[width]">
-      <!-- <div v-if="!revealPassword">
-        <transition name="fade" v-if="error">
-          <img
-            class="absolute w-4 h-4 p-5 error-image"
-            src="@/assets/icons/inputError.svg"
-            alt=""
-          />
-        </transition>
-      </div> -->
       <div
         class="absolute z-5"
         :class="[
@@ -54,13 +39,7 @@
           </svg>
         </div>
       </div>
-      <!-- <transition name="fade">
-        <div class="placeholder absolute" v-if="!showPlaceholder">
-          <p class="text-grey">
-            {{ placeholder }}
-          </p>
-        </div>
-      </transition> -->
+      <p class="font-bold input-label">{{ label }}</p>
       <input
         class="outline-none transition-all input-regular placeholder-borderGrey"
         :class="[
@@ -151,6 +130,11 @@ export default {
       default: "error",
       required: false,
     },
+    label: {
+      type: String,
+      default: "Label",
+      required: false,
+    },
     validation: {
       type: Boolean,
       default: true,
@@ -190,39 +174,17 @@ export default {
       showEyeWrapper: false,
       eyeDropper: false,
       displayPlaceholder: false,
-      // showPlaceholder: false,
     };
   },
-  watch: {
-    validation(value) {},
-    // type(value){
-    //   if(value === 'number'){
-
-    //   }
-    // value(value) {
-    //   if (value) {
-    //   }
-    // },
-    // showPlaceholder(value) {
-    //   console.log(value, this.displayPlaceholder);
-    // },
-  },
+  watch: {},
   computed: {
     displayType() {
       return this.eyeDropper || this.type;
     },
-    // showPlaceholder() {
-    //   if (this.displayPlaceholder || this.value) {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    // },
   },
   methods: {
     displayInput() {
       if (!this.validation) {
-        // console.log("input", this.validation);
         this.error = true;
         this.$emit("valid", false);
       } else {
@@ -247,7 +209,7 @@ export default {
     isNumber(evt) {
       if (this.type === "number") {
         evt = evt ? evt : window.event;
-        var charCode = evt.which ? evt.which : evt.keyCode;
+        let charCode = evt.which ? evt.which : evt.keyCode;
         if (
           (charCode > 31 &&
             (charCode < 48 || charCode > 57) &&
@@ -260,7 +222,7 @@ export default {
         }
       } else if (this.type === "tel") {
         evt = evt ? evt : window.event;
-        var charCode = evt.which ? evt.which : evt.keyCode;
+        let charCode = evt.which ? evt.which : evt.keyCode;
         if (
           (charCode != 43 &&
             charCode > 31 &&
@@ -293,10 +255,10 @@ input {
 }
 .input-regular {
   border: 1px solid #fcfbff !important;
-  background-color: #fcfbff !important;
+  background-color: #f7f8f7 !important;
 }
 .input-active {
-  border: 1px solid #d5ccff !important;
+  border: 1px solid #f7f8f7 !important;
   background-color: transparent !important;
 }
 .error-border {
@@ -312,7 +274,8 @@ input:-webkit-autofill:active {
   color: #706d78 !important;
 }
 input::placeholder {
-  color: #9d9d9d;
+  color: #B6BAB5;
+  font-size: 14px;
 }
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -325,9 +288,9 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-/* input[type="text"] {
-    font-size: 16px;
-  } */
+.input-label {
+  color: #152211;
+}
 .placeholder {
   display: flex;
   height: 100%;

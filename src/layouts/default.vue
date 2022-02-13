@@ -1,10 +1,10 @@
 <template>
   <div class="container-body p-3 md:p-6">
-    <MobileNav class="md:hidden" />
     <div class="main">
-      <Navbar class="sticky top-0 z-50"/>
-      <div class=" bg-white rounded mt-6 body-content h-full">
-        <div class="container h-full">
+      <MobileNav class="md:hidden" />
+      <Navbar class="sticky top-0 z-50" />
+      <div class="bg-white rounded mt-6 body-content h-full">
+        <div class="p-4 md:p-0 md:m-10 container h-full">
           <slot />
         </div>
       </div>
@@ -26,15 +26,16 @@ export default {
   max-height: 100vh;
   overflow: hidden;
   width: 100%;
-  background-color: #F7F8F7;
+  background-color: #f7f8f7;
 }
 
 .main {
   min-height: 100vh;
 }
 .body-content {
-  min-height: calc(100vh - 10rem);
-  overflow-y: auto;
+  max-height: calc(100vh - 10rem);
+  height: 100%;
+  overflow: auto;
 }
 .body-content::-webkit-scrollbar {
   width: 5px !important;
